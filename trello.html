@@ -14,7 +14,7 @@
       <article id="muestra">
         <h1>Pendientes Semana </h1>
         <button id="borraLista" value="muestra" onclick="borrarTodo(this.value);">Borrar Lista</button>
-        <ul>
+        <ul id="bodd2">
           <li>
             Terminar Examen
             <!-- <button onclick="editar();">Editar Pendiente</button> -->
@@ -28,8 +28,8 @@
         </ul>
         <section id="pendientes">
           <h5>Agregar Pendiente</h5>
-          <input type="text" placeholder="Ir al cine">
-          <button onclick="crearPendiente();">Crear Pendiente</button>
+          <input id="bodd" type="text" placeholder="Ir al cine" >
+          <button value="bodd" onclick="crearPendiente(this.value);">Crear Pendiente</button>
         </section>
       </article>
     </section>
