@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mi Trello</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <meta http-equiv="content-language" content="es">
+  </head>
+  <body>
+    <header>
+      <h1>Mi Versión de Trello</h1>
+    </header>
+    <section>
+      <h1>Pendientes Semana </h1>
+      <button onclick="borrarTodo();">Borrar Lista</button>
+      <ul>
+        <li>
+          Terminar Examen
+          <!-- <button onclick="editar();">Editar Pendiente</button> -->
+          <button onclick="borrarPendiente();">Borrar Pendiente</button>
+        </li>
+        <li>
+          Comer Sushi
+          <!-- <button onclick="editar();">Editar Pendiente</button> -->
+          <button onclick="borrarPendiente();">Borrar Pendiente</button>
+        </li>
+      </ul>
+      <h5>Agregar Pendiente</h5>
+      <input type="text" placeholder="Ir al cine">
+      <button onclick="crearPendiente();">Crear Pendiente</button>
+    </section>
+
+    <hr>
+    <h4>Agregar Lista</h4>
+    <input id="creandoLista" type="text" placeholder="Pendientes Hoy">
+    <button onclick="crearLista();">Crear Lista</button>
+
+    <script type="text/javascript" src="assets/js/trello.js"></script>
+  </body>
+</html>
