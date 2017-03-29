@@ -10,24 +10,28 @@
     <header>
       <h1>Mi Versión de Trello</h1>
     </header>
-    <section>
-      <h1>Pendientes Semana </h1>
-      <button onclick="borrarTodo();">Borrar Lista</button>
-      <ul>
-        <li>
-          Terminar Examen
-          <!-- <button onclick="editar();">Editar Pendiente</button> -->
-          <button onclick="borrarPendiente();">Borrar Pendiente</button>
-        </li>
-        <li>
-          Comer Sushi
-          <!-- <button onclick="editar();">Editar Pendiente</button> -->
-          <button onclick="borrarPendiente();">Borrar Pendiente</button>
-        </li>
-      </ul>
-      <h5>Agregar Pendiente</h5>
-      <input type="text" placeholder="Ir al cine">
-      <button onclick="crearPendiente();">Crear Pendiente</button>
+    <section id="contenedor">
+      <article>
+        <h1>Pendientes Semana </h1>
+        <button id="borraLista" onclick="borrarTodo();">Borrar Lista</button>
+        <ul>
+          <li>
+            Terminar Examen
+            <!-- <button onclick="editar();">Editar Pendiente</button> -->
+            <button onclick="borrarPendiente();">Borrar Pendiente</button>
+          </li>
+          <li>
+            Comer Sushi
+            <!-- <button onclick="editar();">Editar Pendiente</button> -->
+            <button onclick="borrarPendiente();">Borrar Pendiente</button>
+          </li>
+        </ul>
+        <section id="pendientes">
+          <h5>Agregar Pendiente</h5>
+          <input type="text" placeholder="Ir al cine">
+          <button onclick="crearPendiente();">Crear Pendiente</button>
+        </section>
+      </article>
     </section>
 
     <hr>
