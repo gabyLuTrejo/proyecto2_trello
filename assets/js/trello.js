@@ -9,8 +9,7 @@ function ObjetoLista(titulo, id){
 
 // Función para crear Lista
 function creaLista(){
-  // boton: Crear Lista
-  // input id: creandoLista
+  // boton: Crear Lista  // input id: creandoLista
   var tituloLista = document.getElementById("creandoLista");
   var idLista = Date.now();
   var listaCreada = new ObjetoLista(tituloLista.value, idLista);
@@ -29,9 +28,9 @@ function mostrarEnHTML(listaNueva){
   document.getElementById(seccionArticulo.id).appendChild(titulo);
   // boton: Borrar Lista  boton.value: seccionArticulo.id
   var textoBoton = "Borrar Lista";
-  var botonBorrarLista = crearBoton(textoBoton, seccionArticulo.id);
+  var botonBorrarLista = crearBoton(textoBoton, seccionArticulo.id, borrarLista);
   document.getElementById(seccionArticulo.id).appendChild(botonBorrarLista);
-  // molde: ul, titulo:Agragar Pendiente, input, boton: Agragar
+  // molde: ul, titulo:Agregar Pendiente, input, boton: Agregar
   var molde = moldePendientes(seccionArticulo.id);
   molde.forEach(function(elemento){
     document.getElementById(seccionArticulo.id).appendChild(elemento);
@@ -39,7 +38,7 @@ function mostrarEnHTML(listaNueva){
 
 }
 
-// Función que agrega el título
+// Función que agrega el título de la lista
 function agregandoTitulo(listaNueva){
   var tituloH1 = document.createElement("h1");
   var tituloTexto = document.createTextNode(listaNueva.titulo);
@@ -48,15 +47,18 @@ function agregandoTitulo(listaNueva){
 }
 
 // Función boton
-function crearBoton(texto, articuloId){
+function crearBoton(texto, articuloId, funcion){
   var boton = document.createElement("button");
   var botonTexto = document.createTextNode(texto);
   boton.appendChild(botonTexto);
+  console.log(boton);
   boton.value = articuloId;
-  // botonAgregarPendiente.onclick = agragarPendiente(); //Falta crear función
+  boton.onclick = funcion;
+  console.log(boton);
   return boton;
 }
 
+// Función donde se crean los elementos base de la lista
 function moldePendientes(articuloId){
   var moldeDePendientes = [];
   // id ul: "ul" + seccionArticulo.id
@@ -72,14 +74,44 @@ function moldePendientes(articuloId){
   inputPendiente.id = "input" + articuloId;
   // boton.value: seccionArticulo.id
   var texto = "Agregar";
-  var botonAgregarPendiente = crearBoton(texto, articuloId);
+  var botonAgregarPendiente = crearBoton(texto, articuloId, liPendientes);
 
   moldeDePendientes.push(ul);
   moldeDePendientes.push(tituloH3);
   moldeDePendientes.push(inputPendiente);
   moldeDePendientes.push(botonAgregarPendiente);
-
   return moldeDePendientes;
+}
+
+// Función Borrar Lista
+function borrarLista(){
+  var idBoton = this.getAttribute("value");
+  var elementoBorrar = document.getElementById(idBoton);
+  document.getElementById("contenedor").removeChild(elementoBorrar);
+}
+
+// Función Borrar Pendiente
+function borrarLi(){
+  var idBoton = this.getAttribute("value");
+  idBoton = "li" + idBoton;
+  var elementoBorrar = document.getElementById(idBoton);
+  document.getElementById("contenedor").removeChild(elementoBorrar);
+}
+
+// Función para crear los pendientes en formato <li>
+function liPendientes(){
+  var articuloId = this.getAttribute("value");
+  // id li: "li" + seccionArticulo.id
+  var li = document.createElement("li");
+  li.id = "li" + articuloId;
+  var textoLi = document.getElementById("input" + articuloId);
+  console.log(textoLi);
+  li.appendChild(textoLi.value);
+  // boton.value: seccionArticulo.id
+  var texto = "Borrar Pendiente"
+  var botonBorrarLi = crearBoton(texto, articuloId, borrarLi);
+  li.appendChild(botonBorrarLi);
+  document.getElementById(articuloId).appendChild(li);
 }
 
 
