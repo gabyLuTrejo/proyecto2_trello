@@ -1,4 +1,3 @@
-var textoH5 = "Agregar Pendiente";
 
 function crearLista(){
 // agrega formáto al título
@@ -27,7 +26,7 @@ function crearLista(){
   articulo.appendChild(lista);
 // agrega sección de Agregar Pendientes
   var pendientesTexto = document.createElement("h5");
-  var texto = document.createTextNode(textoH5);
+  var texto = document.createTextNode("Agregar Pendiente");
   pendientesTexto.appendChild(texto);
   articulo.appendChild(pendientesTexto);
   var cajaTexto = document.createElement("input");
@@ -38,24 +37,27 @@ function crearLista(){
   titulo = document.createTextNode("Crear Pendiente");
   boton2.appendChild(titulo);
   boton2.value = articulo.id;
+  boton2.name = Date.now();
 
   boton2.onclick = function (){
     // agregar elementos li + boton de boorar pendiente
     var inputId = this.value;
+    var liId = this.name;
     var entradaTexto = document.getElementById("texto" + inputId);
     var li = document.createElement("li");
-    li.id = "li"+ inputId;
+    li.id = "li"+ liId;
     var texto = document.createTextNode(entradaTexto.value);
-    var boton = document.createElement("button");
+    var boton3 = document.createElement("button");
     titulo = document.createTextNode("Borrar Pendiente");
-    boton.appendChild(titulo);
-    boton.value = inputId ;
-    boton.onclick = function(){
+    boton3.appendChild(titulo);
+    boton3.value = li.id ;
+    boton3.onclick = function(){
       var elementoBorrar = document.getElementById(this.value);
-      document.getElementById("contenedor").removeChild(elementoBorrar);
+      document.getElementById(lista.id).removeChild(elementoBorrar);
     }
+
     li.appendChild(texto);
-    li.appendChild(boton);
+    li.appendChild(boton3);
     var nuevoElemento = document.getElementById(lista.id);
     entradaTexto.value = "";
     nuevoElemento.appendChild(li); ///error???
@@ -67,9 +69,6 @@ function crearLista(){
   document.getElementById("creandoLista").value = "";
 }
 
-// function obtenerId(valorId){
-//   return valorId;
-// }
 
 function borrarTodo(valorId){
   var elementoBorrar = document.getElementById(valorId);
@@ -96,4 +95,10 @@ function crearPendiente(inputId){
   var nuevoElemento = document.getElementById(inputId+2);
   entradaTexto.value = "";
   nuevoElemento.appendChild(li);
+}
+
+
+function borrarPendiente(valorId){
+  var elementoBorrar = document.getElementById(valorId);
+  document.getElementById("bodd2").removeChild(elementoBorrar);
 }

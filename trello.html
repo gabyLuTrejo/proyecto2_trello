@@ -15,15 +15,15 @@
         <h1>Pendientes Semana </h1>
         <button id="borraLista" value="muestra" onclick="borrarTodo(this.value);">Borrar Lista</button>
         <ul id="bodd2">
-          <li>
+          <li id="li1">
             Terminar Examen
             <!-- <button onclick="editar();">Editar Pendiente</button> -->
-            <button onclick="borrarPendiente();">Borrar Pendiente</button>
+            <button value="li1" ulId="bodd2" onclick="borrarPendiente(this.value, this.ulId);">Borrar Pendiente</button>
           </li>
-          <li>
+          <li id="li2">
             Comer Sushi
             <!-- <button onclick="editar();">Editar Pendiente</button> -->
-            <button onclick="borrarPendiente();">Borrar Pendiente</button>
+            <button  value="li2" ulId="bodd2" onclick="borrarPendiente(this.value, this.ulId);">Borrar Pendiente</button>
           </li>
         </ul>
         <section id="pendientes">
