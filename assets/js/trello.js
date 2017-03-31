@@ -14,20 +14,28 @@ function creaLista(){
   var tituloLista = document.getElementById("creandoLista");
   var idLista = Date.now();
   var listaCreada = new ObjetoLista(tituloLista.value, idLista);
-  console.log(listaCreada);
   mostrarEnHTML(listaCreada);
   ListasCreadas.push(listaCreada);
-  // document.getElementById("creandoLista").value = "";
+  document.getElementById("creandoLista").value = "";
 }
 
 // Función para Mostrar Lista creada en HTML
 function mostrarEnHTML(listaNueva){
   // id: contenedor (sección donde se agregan las listas)
   var seccionArticulo = document.createElement("article");
-  seccionArticulo.id = Date.now();
+  seccionArticulo.id = listaNueva.id;
   document.getElementById("contenedor").appendChild(seccionArticulo);
   var titulo = agregandoTitulo(listaNueva);
   document.getElementById(seccionArticulo.id).appendChild(titulo);
+  // boton: Borrar Lista  boton.value: seccionArticulo.id
+  var textoBoton = "Borrar Lista";
+  var botonBorrarLista = crearBoton(textoBoton, seccionArticulo.id);
+  document.getElementById(seccionArticulo.id).appendChild(botonBorrarLista);
+  // molde: ul, titulo:Agragar Pendiente, input, boton: Agragar
+  var molde = moldePendientes(seccionArticulo.id);
+  molde.forEach(function(elemento){
+    document.getElementById(seccionArticulo.id).appendChild(elemento);
+  });
 
 }
 
@@ -37,81 +45,44 @@ function agregandoTitulo(listaNueva){
   var tituloTexto = document.createTextNode(listaNueva.titulo);
   tituloH1.appendChild(tituloTexto);
   return tituloH1;
-  // document.getElementById("contenedor").appendChild(tituloH1); // cambiar contenedor por la seccion creada
 }
 
-/* Resolución Programación Estructurada
-//-----------------------------------------------------------------
-function crearLista(){
-// agrega formáto al título
-  var tituloH1 = document.createElement("h1");
-  var titulo = document.getElementById("creandoLista").value;
-  titulo = document.createTextNode(titulo);
-  tituloH1.appendChild(titulo);
-// agrega el título
-  var articulo = document.createElement("article");
-  articulo.id = Date.now();
-  articulo.appendChild(tituloH1);
-// agrega boton para borrar lista
+// Función boton
+function crearBoton(texto, articuloId){
   var boton = document.createElement("button");
-  titulo = document.createTextNode("Borrar Lista");
-  boton.appendChild(titulo);
-  boton.value = articulo.id;
-  // boton.onclick = borrarTodo();
-  boton.onclick = function(){
-    var elementoBorrar = document.getElementById(this.value);
-    document.getElementById("contenedor").removeChild(elementoBorrar);
-  }
-  articulo.appendChild(boton);
-// agrega lista tipo ul
-  var lista = document.createElement("ul");
-  lista.id = "lista" + articulo.id;
-  articulo.appendChild(lista);
-// agrega sección de Agregar Pendientes
-  var pendientesTexto = document.createElement("h5");
-  var texto = document.createTextNode("Agregar Pendiente");
-  pendientesTexto.appendChild(texto);
-  articulo.appendChild(pendientesTexto);
-  var cajaTexto = document.createElement("input");
-  cajaTexto.placeholder = "Enviar proyecto";
-  cajaTexto.id = "texto" + articulo.id ;
-  articulo.appendChild(cajaTexto);
-  var boton2 = document.createElement("button");
-  titulo = document.createTextNode("Crear Pendiente");
-  boton2.appendChild(titulo);
-  boton2.value = articulo.id;
-  boton2.name = Date.now();
-
-  boton2.onclick = function (){
-    // agregar elementos li + boton de boorar pendiente
-    var inputId = this.value;
-    var liId = this.name;
-    var entradaTexto = document.getElementById("texto" + inputId);
-    var li = document.createElement("li");
-    li.id = "li"+ liId;
-    var texto = document.createTextNode(entradaTexto.value);
-    var boton3 = document.createElement("button");
-    titulo = document.createTextNode("Borrar Pendiente");
-    boton3.appendChild(titulo);
-    boton3.value = li.id ;
-    boton3.onclick = function(){
-      var elementoBorrar = document.getElementById(this.value);
-      document.getElementById(lista.id).removeChild(elementoBorrar);
-    }
-
-    li.appendChild(texto);
-    li.appendChild(boton3);
-    var nuevoElemento = document.getElementById(lista.id);
-    entradaTexto.value = "";
-    nuevoElemento.appendChild(li); ///error???
-  }
-  articulo.appendChild(boton2);
-
-// agrega articulo con todos sus datos
-  document.getElementById("contenedor").appendChild(articulo);
-  document.getElementById("creandoLista").value = "";
+  var botonTexto = document.createTextNode(texto);
+  boton.appendChild(botonTexto);
+  boton.value = articuloId;
+  // botonAgregarPendiente.onclick = agragarPendiente(); //Falta crear función
+  return boton;
 }
-*/
+
+function moldePendientes(articuloId){
+  var moldeDePendientes = [];
+  // id ul: "ul" + seccionArticulo.id
+  var ul = document.createElement("ul");
+  ul.id = "ul" + articuloId;
+  // titulo (h3: Agregar Pendiente)
+  var tituloH3 = document.createElement("h3");
+  var tituloTexto = document.createTextNode("Agregar Pendiente");
+  tituloH3.appendChild(tituloTexto);
+  // id input: "texto" + seccionArticulo.id
+  var inputPendiente = document.createElement("input");
+  inputPendiente.placeholder = "Enviar Proyecto";
+  inputPendiente.id = "input" + articuloId;
+  // boton.value: seccionArticulo.id
+  var texto = "Agregar";
+  var botonAgregarPendiente = crearBoton(texto, articuloId);
+
+  moldeDePendientes.push(ul);
+  moldeDePendientes.push(tituloH3);
+  moldeDePendientes.push(inputPendiente);
+  moldeDePendientes.push(botonAgregarPendiente);
+
+  return moldeDePendientes;
+}
+
+
 
 //Funciones para caso "muestra" (article id="muestra")
 //----------------------------------------------------------------------------
