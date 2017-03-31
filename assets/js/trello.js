@@ -12,15 +12,36 @@ function creaLista(){
   // boton: Crear Lista
   // input id: creandoLista
   var tituloLista = document.getElementById("creandoLista");
-  var tituloH1 = document.createElement("h1");
   var idLista = Date.now();
-  var listaCreada = new ObjetoLista(tituloLista, idLista);
+  var listaCreada = new ObjetoLista(tituloLista.value, idLista);
   console.log(listaCreada);
-
+  mostrarEnHTML(listaCreada);
   ListasCreadas.push(listaCreada);
-  document.getElementById("creandoLista").value = "";
+  // document.getElementById("creandoLista").value = "";
 }
 
+// Función para Mostrar Lista creada en HTML
+function mostrarEnHTML(listaNueva){
+  // id: contenedor (sección donde se agregan las listas)
+  var seccionArticulo = document.createElement("article");
+  seccionArticulo.id = Date.now();
+  document.getElementById("contenedor").appendChild(seccionArticulo);
+  var titulo = agregandoTitulo(listaNueva);
+  document.getElementById(seccionArticulo.id).appendChild(titulo);
+
+}
+
+// Función que agrega el título
+function agregandoTitulo(listaNueva){
+  var tituloH1 = document.createElement("h1");
+  var tituloTexto = document.createTextNode(listaNueva.titulo);
+  tituloH1.appendChild(tituloTexto);
+  return tituloH1;
+  // document.getElementById("contenedor").appendChild(tituloH1); // cambiar contenedor por la seccion creada
+}
+
+/* Resolución Programación Estructurada
+//-----------------------------------------------------------------
 function crearLista(){
 // agrega formáto al título
   var tituloH1 = document.createElement("h1");
@@ -90,6 +111,7 @@ function crearLista(){
   document.getElementById("contenedor").appendChild(articulo);
   document.getElementById("creandoLista").value = "";
 }
+*/
 
 //Funciones para caso "muestra" (article id="muestra")
 //----------------------------------------------------------------------------
