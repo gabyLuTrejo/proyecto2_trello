@@ -53,7 +53,6 @@ function crearBoton(texto, articuloId, funcion){
   boton.appendChild(botonTexto);
   boton.value = articuloId;
   boton.onclick = funcion;
-  console.log(boton);
   return boton;
 }
 
@@ -92,9 +91,9 @@ function borrarLista(){
 // Función Borrar Pendiente
 function borrarLi(){
   var idBoton = this.getAttribute("value");
-  idBoton = "li" + idBoton;
-  var elementoBorrar = document.getElementById(idBoton);
-  document.getElementById("contenedor").removeChild(elementoBorrar);
+  idLi = "li" + idBoton;
+  var elementoBorrar = document.getElementById(idLi);
+  document.getElementById("ul" + idBoton).removeChild(elementoBorrar);
 }
 
 // Función para crear los pendientes en formato <li>
@@ -111,7 +110,7 @@ function liPendientes(){
   var botonBorrarLi = crearBoton(texto, articuloId, borrarLi);
   li.appendChild(botonBorrarLi);
   textoLi.value = "";
-  document.getElementById("ul" + articuloId).appendChild(li);  
+  document.getElementById("ul" + articuloId).appendChild(li);
 }
 
 
@@ -136,7 +135,7 @@ function crearPendiente(inputId){
   boton.value = li.id ;
   boton.onclick = function(){
     var elementoBorrar = document.getElementById(this.value);
-    document.getElementById("contenedor").removeChild(elementoBorrar);
+    document.getElementById("bodd2").removeChild(elementoBorrar);
   }
   li.appendChild(texto);
   li.appendChild(boton);
