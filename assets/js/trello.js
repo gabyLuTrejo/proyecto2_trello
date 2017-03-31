@@ -1,3 +1,25 @@
+var ListasCreadas = [];
+
+//Constructor de ObjetosLista
+function ObjetoLista(titulo, id){
+  this.titulo = titulo;
+  this.id = id;
+  this.pendiestesDeLista = [];
+}
+
+// Función para crear Lista
+function creaLista(){
+  // boton: Crear Lista
+  // input id: creandoLista
+  var tituloLista = document.getElementById("creandoLista");
+  var tituloH1 = document.createElement("h1");
+  var idLista = Date.now();
+  var listaCreada = new ObjetoLista(tituloLista, idLista);
+  console.log(listaCreada);
+
+  ListasCreadas.push(listaCreada);
+  document.getElementById("creandoLista").value = "";
+}
 
 function crearLista(){
 // agrega formáto al título
@@ -69,7 +91,8 @@ function crearLista(){
   document.getElementById("creandoLista").value = "";
 }
 
-
+//Funciones para caso "muestra" (article id="muestra")
+//----------------------------------------------------------------------------
 function borrarTodo(valorId){
   var elementoBorrar = document.getElementById(valorId);
   document.getElementById("contenedor").removeChild(elementoBorrar);
