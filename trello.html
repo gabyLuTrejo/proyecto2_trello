@@ -8,12 +8,12 @@
   </head>
   <body>
     <header>
-      <h1>Mi Versión de Trello</h1>
+      <h1 id="trello">Mi Versión de Trello</h1>
     </header>
     <section id="contenedor">
       <article id="muestra">
-        <h1>Pendientes Semana </h1>
         <button id="borraLista" value="muestra" onclick="borrarTodo(this.value);">Borrar Lista</button>
+        <h1>Pendientes Semana </h1>
         <ul id="bodd2">
           <li id="li1">
             Terminar Examen
@@ -27,17 +27,17 @@
           </li>
         </ul>
         <section id="pendientes">
-          <h5>Agregar Pendiente</h5>
+          <h3>Agregar Pendiente</h3>
           <input id="bodd" type="text" placeholder="Ir al cine" >
-          <button value="bodd" onclick="crearPendiente(this.value);">Crear Pendiente</button>
+          <button value="bodd" onclick="crearPendiente(this.value);">Agregar</button>
         </section>
       </article>
     </section>
 
     <hr>
-    <h4>Agregar Lista</h4>
+    <h2>Agregar Lista</h2>
     <input id="creandoLista" type="text" placeholder="Pendientes Hoy">
-     <button onclick="creaLista();">Crear Lista</button> <!--Funcion POO -->
+     <button id="botonCrearLista" onclick="creaLista();">Crear Lista</button> <!--Funcion POO -->
 
     <script type="text/javascript" src="assets/js/trello.js"></script>
   </body>

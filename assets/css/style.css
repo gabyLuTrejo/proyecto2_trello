@@ -1,6 +1,63 @@
-/*section{
-  border-style: ridge;
-}*/
+
+#trello{
+  text-align: center;
+  font-family: "Homer Simpson", cursive;
+  font-size: 40px;
+  color: #210B61;
+}
+
+h1{
+  font-family: "Homer Simpson";
+  font-size: 30px;
+  text-align: center;
+  color: #0B0B61;
+}
+
+h2{
+  font-family: "Homer Simpson";
+  color: #0B0B61;
+}
+
+h3{
+  font-family: "Homer Simpson";
+  text-align: center;
+  color: #0B0B61;
+}
+
 article{
   border-style: ridge;
+  border-radius: 6px;
+  width: 500px;
+  border-color: cornsilk;
+  background-color: ivory;
+  margin: 50px;
+}
+
+#botonCrearLista{
+  text-decoration: none;
+  padding: 3px;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 6px;
+  float: inherit;
+}
+
+button{
+  text-decoration: none;
+  padding: 3px;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 6px;
+  float: right;
+}
+
+input{
+  width: 250px;
+  margin-left: 100px;
+}
+
+li{
+  margin: 4px;
+  font-size: 18px;
+  font-family: "Homer Simpson";
 }

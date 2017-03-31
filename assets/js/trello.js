@@ -24,12 +24,14 @@ function mostrarEnHTML(listaNueva){
   var seccionArticulo = document.createElement("article");
   seccionArticulo.id = listaNueva.id;
   document.getElementById("contenedor").appendChild(seccionArticulo);
-  var titulo = agregandoTitulo(listaNueva);
-  document.getElementById(seccionArticulo.id).appendChild(titulo);
   // boton: Borrar Lista  boton.value: seccionArticulo.id
   var textoBoton = "Borrar Lista";
   var botonBorrarLista = crearBoton(textoBoton, seccionArticulo.id, borrarLista);
   document.getElementById(seccionArticulo.id).appendChild(botonBorrarLista);
+  // Agregar Título de la Lista
+  var titulo = agregandoTitulo(listaNueva);
+  document.getElementById(seccionArticulo.id).appendChild(titulo);
+
   // molde: ul, titulo:Agregar Pendiente, input, boton: Agregar
   var molde = moldePendientes(seccionArticulo.id);
   molde.forEach(function(elemento){
