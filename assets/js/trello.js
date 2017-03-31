@@ -51,7 +51,6 @@ function crearBoton(texto, articuloId, funcion){
   var boton = document.createElement("button");
   var botonTexto = document.createTextNode(texto);
   boton.appendChild(botonTexto);
-  console.log(boton);
   boton.value = articuloId;
   boton.onclick = funcion;
   console.log(boton);
@@ -105,13 +104,14 @@ function liPendientes(){
   var li = document.createElement("li");
   li.id = "li" + articuloId;
   var textoLi = document.getElementById("input" + articuloId);
-  console.log(textoLi);
-  li.appendChild(textoLi.value);
+  var texto = document.createTextNode(textoLi.value);
+  li.appendChild(texto);
   // boton.value: seccionArticulo.id
   var texto = "Borrar Pendiente"
   var botonBorrarLi = crearBoton(texto, articuloId, borrarLi);
   li.appendChild(botonBorrarLi);
-  document.getElementById(articuloId).appendChild(li);
+  textoLi.value = "";
+  document.getElementById("ul" + articuloId).appendChild(li);  
 }
 
 
